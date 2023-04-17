@@ -31,12 +31,19 @@ public class CuentaCorriente {
 	 * @param saldo  guardara valor asignable a atributo saldo
 	 */
 	public CuentaCorriente(String dni, String nombre, double saldo) {
-		// doy a atributo dni valor de parametro de entrada dni
-		this.dni = dni;
+		// si longitud del dni igual a 9
+		if (dni.length() == 9) {
+			// doy a atributo dni valor de parametro de entrada dni
+			this.dni = dni;
+		}
 		// doy a atributo nombre valor de parametro de entrada nombre
 		this.nombre = nombre;
-		// doy a atributo saldo valor de parametro de entrada saldo
-		this.saldo = saldo;
+
+		// si de saldo igual o mayor a 0
+		if (saldo >= 0) {
+			// doy a atributo saldo valor de parametro de entrada saldo
+			this.saldo = saldo;
+		}
 	}
 
 	/**
@@ -104,14 +111,20 @@ public class CuentaCorriente {
 	 */
 	public static boolean compruebaDniUsado(String dni, CuentaCorriente[] cuentas) {
 		boolean usado = false;
-		int posicion = 0;
+		int posicion = 0;// GUARDARA POSICION DEL ARRAY ACTUAL INICIALIZO A 0 PARA BUCLE
 
+		// bucle que recorrera el array cuentas mientras posicion menor a longitud del
+		// mismo
 		while (posicion < cuentas.length) {
 
+			// si posicion actual devuelve un valor en el getter igual a dni
 			if (cuentas[posicion].getDni().equals(dni)) {
+				// significa que ya he usado ese dni, usado pasa a ser true
 				usado = true;
+				// y hago break
 				break;
 
+				// de lo contrario avanzo una posicion y sigo ejecutando el bucle
 			} else {
 				posicion++;
 			}
@@ -130,14 +143,21 @@ public class CuentaCorriente {
 	 */
 	public static int numeroCuenta(String dni, CuentaCorriente[] cuentas) {
 		int numeroCuenta = 0;
-		int posicion = 0;
+		int posicion = 0;// GUARDARA POSICION DEL ARRAY ACTUAL INICIALIZO A 0 PARA BUCLE
 
+		// bucle que recorrera el array cuentas mientras posicion menor a longitud del
+		// mismo
 		while (posicion < cuentas.length) {
 
+			// si posicion actual devuelve un valor en el getter igual a dni
 			if (cuentas[posicion].getDni().equals(dni)) {
+				// numeroCuenta pasa a ser igual a posicion actual devolviendo asi la posicion
+				// del dni buscado
 				numeroCuenta = posicion;
+				// y hago break
 				break;
 
+				// de lo contrario avanzo una posicion y sigo ejecutando el bucle
 			} else {
 				posicion++;
 			}
