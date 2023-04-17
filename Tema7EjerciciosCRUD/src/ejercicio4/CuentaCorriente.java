@@ -2,7 +2,8 @@ package ejercicio4;
 
 /**
  * Clase Cuenta corriente que contiene metodos para realizar transacciones y ver
- * los datos de cuentas bancarias
+ * los datos de cuentas bancarias y localizarlas mediante atributo dni ademas de
+ * comprobar si el dni se encuentra en la lista de cuentas
  * 
  * @author jperez
  *
@@ -38,28 +39,13 @@ public class CuentaCorriente {
 		this.saldo = saldo;
 	}
 
+	/**
+	 * getter de atributo dni
+	 * 
+	 * @return dni devolvera valor actual de atributo dni
+	 */
 	public String getDni() {
 		return dni;
-	}
-
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public double getSaldo() {
-		return saldo;
-	}
-
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
 	}
 
 	/**
@@ -74,11 +60,13 @@ public class CuentaCorriente {
 			saldo -= dineroSolicitado;
 			// y se le comunicara al usuario mediante mensaje por pantalla
 			System.out.println("Su transaccion es posible y se ha llevado a cabo. ");
+			System.out.println();
 
 			// de lo contrario no se llevara a cabo la operacion
 			// y se le comunicara al usuario mediante mensaje por pantalla
 		} else {
 			System.out.println("Su transaccion no es posible, no tiene suficiente saldo. ");
+			System.out.println();
 		}
 	}
 
@@ -90,6 +78,9 @@ public class CuentaCorriente {
 	public void ingresarDinero(double dineroIngresar) {
 		// añado el valor de dineroIngresar a atributo saldo
 		saldo += dineroIngresar;
+		// y se le comunica al usuario mediante mensaje por pantalla
+		System.out.println("Su transaccion es posible y se ha llevado a cabo. ");
+		System.out.println();
 	}
 
 	/**
@@ -100,15 +91,16 @@ public class CuentaCorriente {
 		// print de pantalla de los atributos con los valores del objeto con el que se
 		// usa el metodo
 		System.out.println("La cuenta de: " + dni + " " + nombre + ", tiene " + saldo + " de saldo.");
+		System.out.println();
 	}
 
 	/**
 	 * metodo que comprobara si un dni se encuentra en el array cuentas tipo
 	 * CuentaCorriente
 	 * 
-	 * @param dni
-	 * @param cuentas
-	 * @return
+	 * @param dni     guardara valor asignable a atributo
+	 * @param cuentas guardara valor asignable a atributo cuentas
+	 * @return usado devolvera true o false segun el dni este siendo usado o no
 	 */
 	public static boolean compruebaDniUsado(String dni, CuentaCorriente[] cuentas) {
 		boolean usado = false;
@@ -131,9 +123,10 @@ public class CuentaCorriente {
 	 * metodo que buscara y devolvera la posicion en la que se encuentra un dni
 	 * asignado a una cuenta especifica en el array cuentas de tipo cuentaCorriente
 	 * 
-	 * @param dni
-	 * @param cuentas
-	 * @return
+	 * @param dni     guardara valor asignable a atributo dni
+	 * @param cuentas guardara valor asignable a atributo cuentas
+	 * @return numeroCuenta devolvera posicion del array en la que se encuentra la
+	 *         cuenta con el dni especificado
 	 */
 	public static int numeroCuenta(String dni, CuentaCorriente[] cuentas) {
 		int numeroCuenta = 0;
