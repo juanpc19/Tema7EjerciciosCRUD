@@ -38,6 +38,30 @@ public class CuentaCorriente {
 		this.saldo = saldo;
 	}
 
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
 	/**
 	 * metodo que sacara dinero si existe saldo suficiente para ello
 	 * 
@@ -76,6 +100,56 @@ public class CuentaCorriente {
 		// print de pantalla de los atributos con los valores del objeto con el que se
 		// usa el metodo
 		System.out.println("La cuenta de: " + dni + " " + nombre + ", tiene " + saldo + " de saldo.");
+	}
+
+	/**
+	 * metodo que comprobara si un dni se encuentra en el array cuentas tipo
+	 * CuentaCorriente
+	 * 
+	 * @param dni
+	 * @param cuentas
+	 * @return
+	 */
+	public static boolean compruebaDniUsado(String dni, CuentaCorriente[] cuentas) {
+		boolean usado = false;
+		int posicion = 0;
+
+		while (posicion < cuentas.length) {
+
+			if (cuentas[posicion].getDni().equals(dni)) {
+				usado = true;
+				break;
+
+			} else {
+				posicion++;
+			}
+		}
+		return usado;
+	}
+
+	/**
+	 * metodo que buscara y devolvera la posicion en la que se encuentra un dni
+	 * asignado a una cuenta especifica en el array cuentas de tipo cuentaCorriente
+	 * 
+	 * @param dni
+	 * @param cuentas
+	 * @return
+	 */
+	public static int numeroCuenta(String dni, CuentaCorriente[] cuentas) {
+		int numeroCuenta = 0;
+		int posicion = 0;
+
+		while (posicion < cuentas.length) {
+
+			if (cuentas[posicion].getDni().equals(dni)) {
+				numeroCuenta = posicion;
+				break;
+
+			} else {
+				posicion++;
+			}
+		}
+		return numeroCuenta;
 	}
 
 }
